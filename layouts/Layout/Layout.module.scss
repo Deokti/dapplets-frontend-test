@@ -1,0 +1,31 @@
+.grid {
+	display: grid;
+
+	min-height: 100vh;
+
+	background-image: url('../../public/bg-main.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	grid-template-columns: 360px minmax(300px, 1368px) 320px;
+	grid-template-rows: auto 1fr;
+	grid-template-areas:
+		"sidepanel header settingspanel"
+		"sidepanel body settingspanel";
+}
+
+.header {
+	grid-area: header;
+}
+
+.sidePanel {
+	grid-area: sidepanel;
+}
+
+.body {
+	grid-area: body;
+}
+
+.settingsPagel {
+	grid-area: settingspanel;
+}

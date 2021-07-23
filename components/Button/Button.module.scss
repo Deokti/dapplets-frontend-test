@@ -1,0 +1,42 @@
+.button {
+	padding: 13px 20px;
+
+	cursor: pointer;
+	text-transform: uppercase;
+
+	color: #FFF;
+
+	border: none;
+	border-radius: 10px;
+
+	background-color: red;
+
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.vinous {
+	background-color: #C50140;
+
+	&:hover {
+		background-color: #950835;
+	}
+}
+
+.blue {
+	background-color: #0085FF;
+
+	&:hover {
+		background-color: #0371D8;
+	}
+}
+
+.outline {
+	border: 1px solid #FFF;
+	background-color: transparent;
+
+	&:hover {
+		color: #000;
+		background-color: #FFF;
+	}
+}

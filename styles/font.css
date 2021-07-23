@@ -1,0 +1,33 @@
+/* Используется шрифт SF Pro Display с начартаниями: 400, 500, 600, 900 */
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFProDisplay-400.woff2');
+
+	font-weight: 400;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFProDisplay-500.woff2');
+
+	font-weight: 500;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFProDisplay-600.woff2');
+
+	font-weight: 600;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SF Pro Display';
+	src: url('/fonts/SFProDisplay-900.woff2');
+
+	font-weight: 900;
+	font-style: normal;
+}

@@ -1,0 +1,44 @@
+.header {
+	display: flex;
+	justify-content: space-between;
+
+	padding: 15px 90px 15px 20px;
+
+	background: linear-gradient(180deg, rgba(185, 251, 255, 0.2) 0%, rgba(227, 220, 255, 0.2) 100%), linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.3);
+}
+
+.extension {
+	display: flex;
+	align-items: center;
+
+	color: #BBB;
+
+	font-size: 16px;
+	font-weight: 400;
+
+	& > span {
+		margin-left: 10px;
+	}
+}
+
+.extensionState {
+	color: #62BD6B;
+
+	font-weight: 500;
+}
+
+.settings {
+	display: flex;
+	align-items: center;
+
+	cursor: pointer;
+
+	color: #565555;
+
+	font-size: 16px;
+	font-weight: 500;
+
+	& > span {
+		margin-left: 10px;
+	}
+}
