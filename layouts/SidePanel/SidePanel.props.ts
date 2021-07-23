@@ -1,3 +1,5 @@
-import React, { HTMLAttributes, DetailedHTMLProps } from "react";
+import { IMenuContext } from "../../context/menu/menu.context";
 
-export interface SidePanelProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+export interface SidePanelProps extends IMenuContext {
+	className: string
+}

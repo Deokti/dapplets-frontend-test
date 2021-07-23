@@ -1,0 +1,27 @@
+.tag {
+	display: inline-block;
+	align-items: center;
+
+	padding: 3px;
+
+	color: #FFF;
+
+	font-size: 10px;
+	font-weight: 500;
+	line-height: 100%;
+}
+
+.purple {
+	background-color: #5241BF;
+}
+
+.green {
+	background-color: #41BFB0;
+}
+
+.close {
+	padding: 0;
+
+	border: none;
+	background-color: transparent;
+}

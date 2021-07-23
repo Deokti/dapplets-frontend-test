@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Header } from '../Header';
 import { SettingsPanel } from '../SettingsPanel';
-import { SidePanel } from '../SidePanel';
+import SidePanel from '../SidePanel';
 import { LayoutProps } from './Layout.props';
 import styles from './Layout.module.scss';
 
