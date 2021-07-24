@@ -1,3 +1,8 @@
-import React, { HTMLAttributes, DetailedHTMLProps } from "react";
+import { MenuList } from "../../interfaces";
 
-export interface SidePanelProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> { }
+export interface SidePanelProps {
+	className: string
+	menu: MenuList
+	activeMenu: number
+	setActiveMenu: (activeMenu: number) => void;
+}
