@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { IMenuContext, MenuContextProvider } from "../context/menu/menu.context";
+import { IMenuContext } from "../context/menu/menu.context";
 import { ITagsContext } from "../context/tags/tags.context";
 import { TagsContextProvider } from "../context/tags/tags.provider";
 import Layout from "../layouts/Layout";

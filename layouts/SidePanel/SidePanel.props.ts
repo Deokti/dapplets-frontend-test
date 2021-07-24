@@ -1,5 +1,8 @@
-import { IMenuContext } from "../../context/menu/menu.context";
+import { MenuList } from "../../interfaces";
 
-export interface SidePanelProps extends IMenuContext {
+export interface SidePanelProps {
 	className: string
+	menu: MenuList
+	activeMenu: number
+	setActiveMenu: (activeMenu: number) => void;
 }

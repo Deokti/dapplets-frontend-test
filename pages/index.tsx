@@ -1,7 +1,5 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { BiHeart, BiTrendingUp } from 'react-icons/bi';
-import { FiCodesandbox, FiGrid, FiUsers } from 'react-icons/fi';
 import { compose } from 'redux';
 import { API_URL } from '../config/API_URL';
 import { axios } from '../config/axios';

@@ -6,15 +6,13 @@ import { Logo } from '../../components/Logo';
 import ArrowLeft from '../../components/Icons/ArrowLeft.svg';
 import { Tag } from '../../components/Tag';
 import { TagsContext } from '../../context/tags/tags.context';
-import { MenuContext, MenuContextProvider } from '../../context/menu/menu.context';
 import { IMenu } from '../../interfaces';
+import { connect } from 'react-redux';
+import { IData } from '../../interfaces/redux.state';
+import { setActiveMenu } from '../../redux/actions';
 
-function SidePanel({ className }: SidePanelProps): React.ReactElement<SidePanelProps> {
+function SidePanel({ menu, className, activeMenu, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
 	const { tags } = useContext(TagsContext);
-	const { menu, activeMenu, setActiveMenu } = useContext(MenuContext);
-
-	console.log(setActiveMenu);
-
 
 	return (
 		<div className={cn(styles.panel, className)}>
@@ -33,6 +31,7 @@ function SidePanel({ className }: SidePanelProps): React.ReactElement<SidePanelP
 								className={cn(styles.categoryItem, {
 									[styles.categoryActive]: id === activeMenu,
 								})}
+								onClick={() => setActiveMenu(id)}
 							>
 								<div className={styles.categoryIcon}>
 									<Icon size={24} />
@@ -60,4 +59,6 @@ function SidePanel({ className }: SidePanelProps): React.ReactElement<SidePanelP
 	);
 }
 
-export default SidePanel;
+const mapStateToProps = ({ menu, activeMenu }: IData) => ({ menu, activeMenu });
+
+export default connect(mapStateToProps, { setActiveMenu })(SidePanel);

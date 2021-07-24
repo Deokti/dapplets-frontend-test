@@ -1,4 +1,4 @@
-import { MenuList, TagsList } from "./index";
+import { MenuList } from "./index";
 
 export interface IStore {
 	data: IData
@@ -7,5 +7,4 @@ export interface IStore {
 export interface IData {
 	menu: MenuList,
 	activeMenu: number,
-	tags: TagsList,
 }
