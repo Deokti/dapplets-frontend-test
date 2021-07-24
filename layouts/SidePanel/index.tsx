@@ -25,6 +25,7 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 			<ul className={styles.category}>
 				{
 					menu && menu.map(({ id, name }: IMenu): React.ReactElement => {
+
 						return (
 							<li key={id}
 								className={cn(styles.categoryItem, {

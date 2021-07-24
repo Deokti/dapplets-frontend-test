@@ -3,7 +3,7 @@ import { FiCodesandbox, FiGrid, FiUsers } from 'react-icons/fi';
 import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 import { IData } from '../interfaces/redux.state';
-import { setActiveMenu, setTags } from './actions';
+import { setActiveMenu, setDapplets, setTags } from './actions';
 
 export const menuIcons = {
 	0: <FiCodesandbox size={24} />,
@@ -28,6 +28,7 @@ const initialState: IData = {
 		{ id: 2, title: 'TOP-10 Twitter Dapplets', link: 'https://greatchat.ru/twitter/reyting-tvittera-top10', author: 'Me' },
 	],
 	tags: [],
+	dapplets: [],
 };
 
 // create your reducer
@@ -48,6 +49,13 @@ export const rootReducer = (state: IData = initialState, action: AnyAction): IDa
 			return {
 				...state,
 				tags: action.payload
+			};
+		}
+
+		case setDapplets.toString(): {
+			return {
+				...state,
+				dapplets: action.payload
 			};
 		}
 
