@@ -107,3 +107,46 @@
 		opacity: 1;
 	}
 }
+
+.list {
+	margin-top: 40px;
+	padding-left: 36px;
+}
+
+.listTitle {
+	color: #2A2A2A;
+
+	font-size: 16px;
+	font-weight: 800;
+	line-height: 19px;
+}
+
+.listItems {
+	padding-left: 0;
+
+	list-style: none;
+}
+
+.listItem {
+	margin-bottom: 20px;
+}
+
+.listItemLink {
+	& > span {
+		color: #0085FF;
+
+		font-size: 16px;
+		line-height: 19px;
+
+		text-decoration-line: underline;
+	}
+}
+
+.tagItems {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tagsItem {
+	margin-right: 10px;
+}

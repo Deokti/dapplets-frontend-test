@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
 import { IData } from '../../interfaces/redux.state';
 import { setActiveMenu } from '../../redux/actions';
 
-function SidePanel({ menu, className, activeMenu, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
+function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
 	const { tags } = useContext(TagsContext);
 
 	return (
@@ -43,12 +43,27 @@ function SidePanel({ menu, className, activeMenu, setActiveMenu }: SidePanelProp
 				}
 			</ul>
 
-			<div className={styles.tags}>
-				<h3 className={styles.tagsTitle}>My tags</h3>
-				<ul className={styles.tagsList}>
+			<div className={styles.list}>
+				<h3 className={styles.listTitle}>My lists</h3>
+
+				<ul className={styles.listItems}>
+					{myList.map(({ id, title, link, author }) => {
+						return (
+							<li key={id} className={styles.listItem}>
+								<span className={styles.listItemName}>{title}</span>
+								<a href={link} className={styles.listItemLink}> (<span>{author}</span>)</a>
+							</li>
+						);
+					})}
+				</ul>
+			</div>
+
+			<div className={styles.list}>
+				<h3 className={styles.listTitle}>My tags</h3>
+				<ul className={cn(styles.listItems, styles.tagItems)}>
 					{tags.map(({ id, name }) => {
 						return (
-							<li className={styles.tagsItem} key={id}>
+							<li className={cn(styles.listItem, styles.tagsItem)} key={id}>
 								<Tag>{name}</Tag>
 							</li>
 						);
@@ -59,6 +74,6 @@ function SidePanel({ menu, className, activeMenu, setActiveMenu }: SidePanelProp
 	);
 }
 
-const mapStateToProps = ({ menu, activeMenu }: IData) => ({ menu, activeMenu });
+const mapStateToProps = ({ menu, myList, activeMenu }: IData) => ({ menu, activeMenu, myList });
 
 export default connect(mapStateToProps, { setActiveMenu })(SidePanel);
