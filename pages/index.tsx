@@ -15,7 +15,7 @@ function Home({ dapplets }: HomeProps): React.ReactElement<HomeProps> {
 
   return (
     <Layout>
-      <Dapplets />
+      <Dapplets dapplets={dapplets} />
     </Layout>
   );
 }
