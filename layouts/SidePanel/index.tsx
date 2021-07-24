@@ -1,18 +1,17 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { SidePanelProps } from './SidePanel.props';
 import cn from 'classnames';
 import styles from './SidePanel.module.scss';
 import { Logo } from '../../components/Logo';
 import ArrowLeft from '../../components/Icons/ArrowLeft.svg';
 import { Tag } from '../../components/Tag';
-import { TagsContext } from '../../context/tags/tags.context';
 import { IMenu } from '../../interfaces';
 import { connect } from 'react-redux';
 import { IData } from '../../interfaces/redux.state';
 import { setActiveMenu } from '../../redux/actions';
+import { menuIcons } from '../../redux/reducer';
 
-function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
-	const { tags } = useContext(TagsContext);
+function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
 
 	return (
 		<div className={cn(styles.panel, className)}>
@@ -25,7 +24,7 @@ function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SideP
 
 			<ul className={styles.category}>
 				{
-					menu && menu.map(({ id, name, Icon }: IMenu): React.ReactElement => {
+					menu && menu.map(({ id, name }: IMenu): React.ReactElement => {
 						return (
 							<li key={id}
 								className={cn(styles.categoryItem, {
@@ -34,7 +33,7 @@ function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SideP
 								onClick={() => setActiveMenu(id)}
 							>
 								<div className={styles.categoryIcon}>
-									<Icon size={24} />
+									{menuIcons[id]}
 								</div>
 								<span className={styles.categoryName}>{name}</span>
 							</li>
@@ -61,7 +60,7 @@ function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SideP
 			<div className={styles.list}>
 				<h3 className={styles.listTitle}>My tags</h3>
 				<ul className={cn(styles.listItems, styles.tagItems)}>
-					{tags.map(({ id, name }) => {
+					{tags && tags.map(({ id, name }) => {
 						return (
 							<li className={cn(styles.listItem, styles.tagsItem)} key={id}>
 								<Tag>{name}</Tag>
@@ -74,6 +73,6 @@ function SidePanel({ menu, className, activeMenu, myList, setActiveMenu }: SideP
 	);
 }
 
-const mapStateToProps = ({ menu, myList, activeMenu }: IData) => ({ menu, activeMenu, myList });
+const mapStateToProps = ({ menu, myList, activeMenu, tags }: IData) => ({ menu, activeMenu, myList, tags });
 
 export default connect(mapStateToProps, { setActiveMenu })(SidePanel);

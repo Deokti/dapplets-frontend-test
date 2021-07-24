@@ -5,13 +5,21 @@ import { HYDRATE } from 'next-redux-wrapper';
 import { IData } from '../interfaces/redux.state';
 import { setActiveMenu, setTags } from './actions';
 
+export const menuIcons = {
+	0: <FiCodesandbox size={24} />,
+	1: <BiHeart size={24} />,
+	2: <FiGrid size={24} />,
+	3: <FiUsers size={24} />,
+	4: <BiTrendingUp size={24} />,
+};
+
 const initialState: IData = {
 	menu: [
-		{ id: 0, name: 'All Dapplets', Icon: FiCodesandbox },
-		{ id: 1, name: 'Editor’s Choice', Icon: BiHeart },
-		{ id: 2, name: 'Essential Dapplets', Icon: FiGrid },
-		{ id: 3, name: 'Social Networks', Icon: FiUsers },
-		{ id: 4, name: 'Financial Dapplets', Icon: BiTrendingUp }
+		{ id: 0, name: 'All Dapplets' },
+		{ id: 1, name: 'Editor’s Choice' },
+		{ id: 2, name: 'Essential Dapplets' },
+		{ id: 3, name: 'Social Networks' },
+		{ id: 4, name: 'Financial Dapplets' }
 	],
 	activeMenu: 0,
 	myList: [
