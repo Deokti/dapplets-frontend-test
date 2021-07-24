@@ -10,8 +10,7 @@ export function Button({ children, outline = false, color = 'blue', className }:
 			[styles.outline]: outline,
 			[styles.vinous]: color === 'vinous',
 			[styles.blue]: color === 'blue',
-			className
-		})}>
+		}, className)}>
 			{children}
 		</button>
 	);
