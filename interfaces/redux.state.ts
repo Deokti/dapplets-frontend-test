@@ -1,11 +1,11 @@
-import { List, MenuList, ITag } from "./index";
+import { List, ITag, IMenu } from "./index";
 
 export interface IStore {
 	data: IData
 }
 
 export interface IData {
-	menu: MenuList;
+	menu: IMenu[];
 	activeMenu: number;
 	myList: List[]
 	tags: ITag[]

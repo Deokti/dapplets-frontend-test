@@ -1,9 +1,10 @@
-import { ITag, List, MenuList } from "../../interfaces";
+import { IMenu, ITag, List } from "../../interfaces";
 
 export interface SidePanelProps {
 	className: string
-	menu: MenuList
+	menu: IMenu[]
 	activeMenu: number
 	myList: List[]
+	tags: ITag[]
 	setActiveMenu: (activeMenu: number) => void;
 }
