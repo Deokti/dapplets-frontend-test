@@ -8,9 +8,14 @@ export interface IMenu {
 
 export type MenuList = Array<IMenu>;
 
-export interface ITags {
+export interface ITag {
 	id: string
 	name: string
 }
 
-export type TagsList = Array<ITags>;
+export interface List {
+	id: number;
+	title: string
+	link: string
+	author: string
+}

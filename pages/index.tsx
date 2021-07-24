@@ -1,6 +1,5 @@
 import { GetStaticProps } from 'next';
 import React from 'react';
-import { compose } from 'redux';
 import { API_URL } from '../config/API_URL';
 import { axios } from '../config/axios';
 import { withLayout } from '../HOC/withLayout';
@@ -9,7 +8,7 @@ function Home(): React.ReactElement {
 
   return (
     <div>
-      контента
+      Контент
     </div>
   );
 }
@@ -28,4 +27,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 };
 
-export default compose(withLayout)(Home);
+export default withLayout(Home);
