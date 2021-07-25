@@ -1,21 +1,17 @@
-import React, { useEffect } from 'react';
-import { Dapplets } from '../components/Dapplets';
+import React from 'react';
+import Dapplets from '../components/Dapplets';
 import { API_URL } from '../config/API_URL';
 import { axios } from '../config/axios';
-import { IDapplets } from '../interfaces/redux.state';
 import Layout from '../layouts/Layout';
 import { setDapplets, setTags } from '../redux/actions';
 import { wrapper } from '../redux/store';
 
-export interface HomeProps {
-  dapplets: IDapplets[]
-}
 
-function Home({ dapplets }: HomeProps): React.ReactElement<HomeProps> {
+function Home(): React.ReactElement {
 
   return (
     <Layout>
-      <Dapplets dapplets={dapplets} />
+      <Dapplets />
     </Layout>
   );
 }
@@ -33,9 +29,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
     store.dispatch({ type: setDapplets.toString(), payload: dapplets });
 
     return {
-      props: {
-        dapplets
-      }
+      props: {}
     };
   } catch (error) {
     console.error(error);

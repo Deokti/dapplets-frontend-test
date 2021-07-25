@@ -12,9 +12,6 @@
 }
 
 .dragAndDrop {
-	width: 18px;
-	height: 9px;
-
 	margin-right: 23px;
 
 	cursor: pointer;
@@ -25,16 +22,30 @@
 }
 
 .top {
+	display: grid;
+	align-items: center;
+
+	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto 1fr;
+}
+
+.image {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
+	justify-content: center;
+
+	width: 50px;
+	height: 50px;
 }
 
 .icon {
-	width: 50px;
-	height: 50px;
+	width: 100%;
+	height: 100%;
 
 	border-radius: 10px;
+}
+
+.iconLoad {
+	display: none;
 }
 
 .information {
@@ -72,6 +83,7 @@
 }
 
 .autor {
+	max-width: 100px;
 	margin-left: 20px;
 
 	color: #BBB;
@@ -86,7 +98,7 @@
 	align-items: center;
 	flex-wrap: wrap;
 
-	max-width: 140px;
+	max-width: 145px;
 	margin-right: 20px;
 	margin-left: 20px;
 	padding-left: 0;
