@@ -1,6 +1,4 @@
 .button {
-	padding: 13px 20px;
-
 	cursor: pointer;
 	text-transform: uppercase;
 
@@ -23,4 +21,20 @@
 
 .uninstall {
 	background-color: #CCD4DB;
+
+	&:hover {
+		background-color: #C3CACF;
+	}
+}
+
+.appearanceInstall {
+	padding: 8px 20px;
+
+	border-radius: 50px;
+}
+
+.default {
+	padding: 13px 20px;
+
+	border-radius: 10px;
 }

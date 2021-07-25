@@ -28,6 +28,12 @@ const initialState: IData = {
 		{ id: 2, title: 'TOP-10 Twitter Dapplets', link: 'https://greatchat.ru/twitter/reyting-tvittera-top10', author: 'Me' },
 	],
 	tags: [],
+	communityTags: [
+		{ id: '0', name: 'Social' },
+		{ id: '1', name: 'Top 100' },
+		{ id: '2', name: 'Testing' },
+		{ id: '3', name: 'Favourites' },
+	],
 	dapplets: [],
 };
 
