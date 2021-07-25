@@ -11,6 +11,7 @@ import { workingOn } from './working-on';
 import WorkingStateIcon from '../../components/Icons/WorkingState.svg';
 import { createCommunityTag, createTag } from '../../redux/actions';
 import { ICreateTag } from '../../interfaces';
+import { notification } from '../../utils/notification';
 
 interface IValue {
 	myTag: string;
@@ -36,16 +37,25 @@ function SettingsPanel({ className, tags, communityTags, createTag, createCommun
 	}
 
 	function onCreateMyTag() {
-		if (value.myTag.length < 3) return false;
+		if (value.myTag.length < 3) {
+			notification({ content: 'Must be more than 3 characters to create a tag', appearance: 'error' });
+			return false;
+		}
 
 		createTag(newTag(value.myTag));
+		notification({ content: 'My Tag is Created', appearance: 'success' });
 		setValue((state) => ({ ...state, myTag: '' }));
 	}
 
+
 	function onCreateCommunityTag() {
-		if (value.communityTag.length < 3) return false;
+		if (value.communityTag.length < 3) {
+			notification({ content: 'Must be more than 3 characters to create a tag', appearance: 'error' });
+			return false;
+		}
 
 		createCommunityTag(newTag(value.communityTag));
+		notification({ content: 'Community Tag is Created', appearance: 'success' });
 		setValue((state) => ({ ...state, communityTag: '' }));
 	}
 
