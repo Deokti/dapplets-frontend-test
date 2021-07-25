@@ -1,24 +1,26 @@
-import React from 'react';
-import { IDapplets } from '../../interfaces/redux.state';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { ITag } from '../../interfaces';
+import { IDapplets, IData, IStore } from '../../interfaces/redux.state';
 import { DappletsItem } from '../DappletsItem';
 import styles from './Dapplets.module.scss';
 
 
 export interface DappletsProps {
-	dapplets: IDapplets[]
+	dapplets: IDapplets[];
+	tags: ITag[]
 }
 
-export function Dapplets({ dapplets }: DappletsProps): React.ReactElement<DappletsProps> {
-
-	console.log(dapplets);
+function Dapplets({ dapplets, tags }: DappletsProps): React.ReactElement<DappletsProps> {
 
 	return (
 		<ul className={styles.wrapper}>
 			{
 				dapplets && dapplets.map((item) => {
+
 					return (
 						<li key={item.id}>
-							<DappletsItem item={item} />
+							<DappletsItem dapplets={item} tags={tags} />
 						</li>
 					);
 				})
@@ -26,3 +28,7 @@ export function Dapplets({ dapplets }: DappletsProps): React.ReactElement<Dapple
 		</ul>
 	);
 }
+
+const mapStateToProps = ({ dapplets, tags }: IData) => ({ dapplets, tags });
+
+export default connect(mapStateToProps)(Dapplets);
