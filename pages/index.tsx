@@ -20,10 +20,10 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   try {
     const getTags = await axios.get(API_URL.tags);
     const getDapplets = await axios.get(API_URL.dapplets);
-    const [{ data: data1 }, { data: data2 }] = await axios.all([getTags, getDapplets]);
+    const [{ data: dataTags }, { data: dataDapplets }] = await axios.all([getTags, getDapplets]);
 
-    const { data: tags } = data1;
-    const { data: dapplets } = data2;
+    const { data: tags } = dataTags;
+    const { data: dapplets } = dataDapplets;
 
     store.dispatch({ type: setTags.toString(), payload: tags });
     store.dispatch({ type: setDapplets.toString(), payload: dapplets });

@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { ITag } from '../../interfaces';
-import { IDapplets, IData, IStore } from '../../interfaces/redux.state';
+import { IDapplets, IData } from '../../interfaces/redux.state';
 import { DappletsItem } from '../DappletsItem';
 import styles from './Dapplets.module.scss';
 
