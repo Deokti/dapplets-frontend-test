@@ -1,8 +1,9 @@
 .wrapper {
 	width: 100%;
-
 	margin-bottom: 20px;
 	padding: 12px 20px;
+
+	cursor: pointer;
 
 	border-radius: 10px;
 
@@ -25,7 +26,13 @@
 	display: grid;
 	align-items: center;
 
-	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto max(110px);
+	grid-template-columns: 40px auto max(110px);
+}
+
+.topContent {
+	display: grid;
+	align-items: center;
+	grid-template-columns: 50px max(300px) max(250px) 100px auto;
 }
 
 .image {
@@ -104,4 +111,54 @@
 
 .tagItem {
 	margin: 5px 2px;
+}
+
+.bottom {
+	display: flex;
+	overflow: hidden;
+	justify-content: space-around;
+
+	margin-top: 30px;
+}
+
+.left {
+	max-width: 400px;
+}
+
+.textTitle {
+	margin: 0;
+
+	color: #BBB;
+
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 17px;
+}
+
+.textDescription {
+	margin: 0;
+
+	color: #565555;
+
+	font-size: 16px;
+	line-height: 19px;
+}
+
+.listText {
+	padding-left: 0;
+
+	list-style: none;
+}
+
+.right {
+	display: flex;
+	flex-wrap: wrap;
+
+	margin-left: 30px;
+}
+
+.rightItem {
+	max-width: 130px;
+	margin-right: 30px;
+	margin-bottom: 20px;
 }
