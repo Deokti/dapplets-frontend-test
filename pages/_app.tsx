@@ -1,4 +1,6 @@
 import App, { AppContext } from 'next/app';
+import React from 'react';
+import { Toaster } from 'react-hot-toast';
 import { wrapper } from '../redux/store';
 import '../styles/globals.css';
 
@@ -10,7 +12,12 @@ class MyApp extends App {
 
   render(): React.ReactElement {
     const { Component, pageProps } = this.props;
-    return <Component {...pageProps} />;
+    return (
+      <React.Fragment>
+        <Component {...pageProps} />;
+        <Toaster />
+      </React.Fragment>
+    );
   }
 }
 
