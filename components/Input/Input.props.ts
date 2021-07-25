@@ -5,4 +5,7 @@ export interface InputProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElem
 	placeholder: string;
 	value?: string;
 	className?: string;
+	name?: string
+	onClick?: () => void;
+	onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }

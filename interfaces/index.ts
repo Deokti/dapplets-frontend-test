@@ -16,3 +16,8 @@ export interface List {
 	link: string
 	author: string
 }
+
+export interface ICreateTag {
+	id: string;
+	name: string
+}

@@ -3,7 +3,7 @@ import { FiCodesandbox, FiGrid, FiUsers } from 'react-icons/fi';
 import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 import { IData } from '../interfaces/redux.state';
-import { setActiveMenu, setDapplets, setTags } from './actions';
+import { createCommunityTag, createTag, setActiveMenu, setDapplets, setTags } from './actions';
 
 export const menuIcons = {
 	0: <FiCodesandbox size={24} />,
@@ -62,6 +62,26 @@ export const rootReducer = (state: IData = initialState, action: AnyAction): IDa
 			return {
 				...state,
 				dapplets: action.payload
+			};
+		}
+
+		case createTag.toString(): {
+			return {
+				...state,
+				tags: [
+					...state.tags,
+					action.payload
+				]
+			};
+		}
+
+		case createCommunityTag.toString(): {
+			return {
+				...state,
+				communityTags: [
+					...state.communityTags,
+					action.payload
+				]
 			};
 		}
 

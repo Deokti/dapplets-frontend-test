@@ -1,9 +1,11 @@
 import React, { HTMLAttributes, DetailedHTMLProps } from "react";
-import { ITag } from "../../interfaces";
+import { ICreateTag, ITag } from "../../interfaces";
 
 export interface SettingsPanelProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
 	tags: ITag[]
 	communityTags: ITag[]
+	createTag: (value: ICreateTag) => void
+	createCommunityTag: (value: ICreateTag) => void
 }
 
 export interface TagsProps {
