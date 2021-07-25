@@ -9,21 +9,11 @@
 	border: none;
 	border-radius: 10px;
 
-	background-color: red;
-
 	font-size: 12px;
 	font-weight: 500;
 }
 
-.vinous {
-	background-color: #C50140;
-
-	&:hover {
-		background-color: #950835;
-	}
-}
-
-.blue {
+.install {
 	background-color: #0085FF;
 
 	&:hover {
@@ -31,12 +21,6 @@
 	}
 }
 
-.outline {
-	border: 1px solid #FFF;
-	background-color: transparent;
-
-	&:hover {
-		color: #000;
-		background-color: #FFF;
-	}
+.uninstall {
+	background-color: #CCD4DB;
 }

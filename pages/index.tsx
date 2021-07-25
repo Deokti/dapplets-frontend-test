@@ -6,7 +6,6 @@ import Layout from '../layouts/Layout';
 import { setDapplets, setTags } from '../redux/actions';
 import { wrapper } from '../redux/store';
 
-
 function Home(): React.ReactElement {
 
   return (

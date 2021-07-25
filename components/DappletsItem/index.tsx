@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../config/API_URL';
 import { IDapplets } from '../../interfaces/redux.state';
-import { Button } from '../Button';
+import { DappletsButton } from '../DappletsButton';
 import { Tag } from '../Tag';
 import styles from './DappletsItem.module.scss';
 import DragAndDropIcon from '../Icons/DragAndDrop.svg';
@@ -18,9 +18,11 @@ interface DappletsItemProps {
 
 export function DappletsItem({ open, state, dapplets, tags }: DappletsItemProps): React.ReactElement<DappletsItemProps> {
 	useEffect(onLoadImage, []);
+	useEffect(onGetLocalStorage, []);
 
 	const [loadImage, setLoadImage] = useState<boolean>(true);
 	const [imageUrl, setImageUrl] = useState<string>('');
+	const [install, setInstall] = useState<boolean>(false);
 
 	function onLoadImage(): void {
 		setImageUrl(API_URL.getFile(dapplets.icon));
@@ -33,6 +35,23 @@ export function DappletsItem({ open, state, dapplets, tags }: DappletsItemProps)
 
 	async function onLoad() {
 		setLoadImage(false);
+	}
+
+	function onSetInstallApp() {
+		setInstall(i => !i);
+		onSaveLocalStorage(!install);
+	}
+
+	function onSaveLocalStorage(installState: boolean) {
+		localStorage.setItem(dapplets.id, JSON.stringify(installState));
+	}
+
+	function onGetLocalStorage() {
+		const getInstalState = localStorage.getItem(dapplets.id);
+
+		if (getInstalState !== null) {
+			setInstall(JSON.parse(getInstalState));
+		}
 	}
 
 	return (
@@ -78,7 +97,7 @@ export function DappletsItem({ open, state, dapplets, tags }: DappletsItemProps)
 					})}
 				</ul>
 
-				<Button className={styles.install}>Install</Button>
+				<DappletsButton onClick={onSetInstallApp} install={install} />
 			</div>
 
 		</div>
