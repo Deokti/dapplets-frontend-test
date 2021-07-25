@@ -25,7 +25,7 @@
 	display: grid;
 	align-items: center;
 
-	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto 1fr;
+	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto 90px;
 }
 
 .image {
@@ -72,8 +72,6 @@
 }
 
 .description {
-	max-width: 300px;
-
 	margin-left: 20px;
 
 	color: #565555;
@@ -83,7 +81,6 @@
 }
 
 .autor {
-	max-width: 100px;
 	margin-left: 20px;
 
 	color: #BBB;
@@ -98,7 +95,6 @@
 	align-items: center;
 	flex-wrap: wrap;
 
-	max-width: 145px;
 	margin-right: 20px;
 	margin-left: 20px;
 	padding-left: 0;
@@ -107,12 +103,5 @@
 }
 
 .tagItem {
-	margin-bottom: 10px;
-	margin-left: 4px;
-}
-
-.install {
-	display: block;
-
-	margin-left: auto;
+	margin: 5px 2px;
 }
