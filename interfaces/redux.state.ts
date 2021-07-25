@@ -10,6 +10,7 @@ export interface IData {
 	myList: List[]
 	tags: ITag[]
 	dapplets: IDapplets[]
+	communityTags: ITag[]
 }
 
 export interface IDapplets {

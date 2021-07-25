@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../config/API_URL';
 import { IDapplets } from '../../interfaces/redux.state';
-import { DappletsButton } from '../DappletsButton';
+import { Button } from '../Button';
 import { Tag } from '../Tag';
 import styles from './DappletsItem.module.scss';
 import DragAndDropIcon from '../Icons/DragAndDrop.svg';
@@ -85,7 +85,7 @@ export function DappletsItem({ open, state, dapplets, tags }: DappletsItemProps)
 					{dapplets.tags.map((tag) => {
 						return (
 							<li key={tag}>
-								{Number(tag) <= 7 && (
+								{Number(tag) < tags.length && (
 									<div className={styles.tagItem}>
 										<Tag>
 											{tags[tag]?.name}
@@ -96,10 +96,10 @@ export function DappletsItem({ open, state, dapplets, tags }: DappletsItemProps)
 						);
 					})}
 				</ul>
-
-				<DappletsButton onClick={onSetInstallApp} install={install} />
+				<Button onClick={onSetInstallApp} install={install}>
+					{install ? 'Uninstall' : 'Install'}
+				</Button>
 			</div>
-
 		</div>
 	);
 }

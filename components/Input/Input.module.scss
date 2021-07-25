@@ -1,0 +1,43 @@
+.wrapper {
+	display: flex;
+	align-items: flex-end;
+}
+
+.title {
+	display: block;
+
+	margin-bottom: 10px;
+
+	color: #999;
+
+	font-size: 16px;
+	font-weight: 500;
+}
+
+.content {
+	margin-right: 10px;
+}
+
+.input {
+	width: 187px;
+	height: 40px;
+	padding: 0 10px;
+
+	color: #2A2A2A;
+
+	border: none;
+	border-radius: 10px;
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0) 100%), rgba(255, 255, 255, 0.8);
+	box-shadow: 10px 10px 40px rgba(156, 185, 222, 0.36);
+
+	font-size: 16px;
+
+	&::placeholder {
+		color: #2A2A2A;
+	}
+
+	&:focus {
+		outline: none;
+		box-shadow: 0 0 4px 0 #0085FF;
+	}
+}

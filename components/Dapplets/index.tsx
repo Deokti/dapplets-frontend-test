@@ -14,18 +14,21 @@ export interface DappletsProps {
 function Dapplets({ dapplets, tags }: DappletsProps): React.ReactElement<DappletsProps> {
 
 	return (
-		<ul className={styles.wrapper}>
-			{
-				dapplets && dapplets.map((item) => {
+		<div className={styles.wrapper}>
 
-					return (
+			<span className={styles.line} />
+
+			<ul className={styles.list}>
+				{
+					dapplets && dapplets.map((item) => (
 						<li key={item.id}>
 							<DappletsItem dapplets={item} tags={tags} />
 						</li>
-					);
-				})
-			}
-		</ul>
+					))
+				}
+			</ul>
+		</div>
+
 	);
 }
 

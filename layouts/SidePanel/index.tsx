@@ -3,13 +3,13 @@ import { SidePanelProps } from './SidePanel.props';
 import cn from 'classnames';
 import styles from './SidePanel.module.scss';
 import { Logo } from '../../components/Logo';
-import ArrowLeft from '../../components/Icons/ArrowLeft.svg';
 import { Tag } from '../../components/Tag';
 import { IMenu } from '../../interfaces';
 import { connect } from 'react-redux';
 import { IData } from '../../interfaces/redux.state';
 import { setActiveMenu } from '../../redux/actions';
 import { menuIcons } from '../../redux/reducer';
+import { Arrow } from '../../components/Arrow';
 
 function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
 
@@ -17,9 +17,7 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 		<div className={cn(styles.panel, className)}>
 			<header className={styles.header}>
 				<Logo />
-				<button className={styles.button}>
-					<ArrowLeft />
-				</button>
+				<Arrow direction="left" />
 			</header>
 
 			<ul className={styles.category}>
