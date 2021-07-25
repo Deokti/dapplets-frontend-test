@@ -14,7 +14,7 @@
 .dragAndDrop {
 	margin-right: 23px;
 
-	cursor: pointer;
+	cursor: grab;
 
 	border: none;
 
@@ -25,7 +25,7 @@
 	display: grid;
 	align-items: center;
 
-	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto 90px;
+	grid-template-columns: 40px 50px max(300px) max(250px) 100px auto max(110px);
 }
 
 .image {
