@@ -1,23 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { ITag } from '../../interfaces';
-import { IDapplets, IData } from '../../interfaces/redux.state';
+import { IData } from '../../interfaces/redux.state';
 import { DappletsItem } from '../DappletsItem';
 import styles from './Dapplets.module.scss';
-
-
-export interface DappletsProps {
-	dapplets: IDapplets[];
-	tags: ITag[]
-}
+import { DappletsProps } from './Dapplets.props';
 
 function Dapplets({ dapplets, tags }: DappletsProps): React.ReactElement<DappletsProps> {
 
 	return (
 		<div className={styles.wrapper}>
-
 			<span className={styles.line} />
-
 			<ul className={styles.list}>
 				{
 					dapplets && dapplets.map((item) => (

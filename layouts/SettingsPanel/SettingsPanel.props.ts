@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, DetailedHTMLProps } from "react";
+import { HTMLAttributes, DetailedHTMLProps } from "react";
 import { ICreateTag, ITag } from "../../interfaces";
 
 export interface SettingsPanelProps extends DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement> {
