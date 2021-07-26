@@ -55,3 +55,22 @@
 		border-bottom: 1px solid rgba(#2A2A2A, 0.2);
 	}
 }
+
+@media screen and (max-width: 1350px) {
+	.wrapper {
+		width: 150px;
+	}
+}
+
+@media screen and (max-width: 992px) {
+	.wrapper {
+		width: 100%;
+		margin-top: 10px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.wrapper {
+		font-size: 12px;
+	}
+}
