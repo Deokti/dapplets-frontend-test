@@ -1,17 +1,17 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../config/API_URL';
-import { IDapplets } from '../../interfaces/redux.state';
 import { Button } from '../Button';
 import { Tag } from '../Tag';
-import styles from './DappletsItem.module.scss';
 import DragAndDropIcon from '../Icons/DragAndDrop.svg';
 import cn from 'classnames';
-import { ITag } from '../../interfaces';
 import React from 'react';
-import { DappletsItemProps } from './DappletsItem.props';
+import { ApplicationItemProps } from './ApplicationItem.props';
+import styles from './ApplicationItem.module.scss';
+import { ApplicationItemBottom } from './ApplicationItemBottom';
+import { notification } from '../../utils/notification';
 
 
-export function DappletsItem({ dapplets, tags }: DappletsItemProps): React.ReactElement<DappletsItemProps> {
+export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React.ReactElement<ApplicationItemProps> {
 	useEffect(onLoadImage, []);
 	useEffect(onGetLocalStorage, []);
 
@@ -26,6 +26,7 @@ export function DappletsItem({ dapplets, tags }: DappletsItemProps): React.React
 
 	async function onError() {
 		setLoadImage(false);
+		notification({ content: `An error occured while loading the image by - ${dapplets.title}`, appearance: 'error' });
 		setImageUrl('./no-image.jpg');
 	}
 
@@ -108,75 +109,8 @@ export function DappletsItem({ dapplets, tags }: DappletsItemProps): React.React
 				</Button>
 			</div>
 
-			{open && <DappletsItemBottom dapplets={dapplets} onClick={onChangeOpened} />}
+			{open && <ApplicationItemBottom dapplets={dapplets} onClick={onChangeOpened} />}
 		</div>
 	);
 }
 
-function DappletsItemBottom({ dapplets, onClick }: { dapplets: IDapplets, onClick: () => void }): React.ReactElement {
-	return (
-		<div className={styles.bottom} onClick={onClick}>
-			<div className={styles.left}>
-				<h5 className={styles.textTitle}>Semper neque</h5>
-				<p className={styles.textDescription}>{dapplets.text_1}</p>
-			</div>
-
-			<div className={styles.right}>
-				<ul className={styles.listText}>
-					{dapplets.text_2 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Semper neque</h5>
-							<p className={styles.textDescription}>{dapplets.text_2}</p>
-						</li>
-					)}
-					{dapplets.text_3 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Leo ipsum.</h5>
-							<p className={styles.textDescription}>{dapplets.text_3}</p>
-						</li>
-					)}
-					{dapplets.text_4 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Elit sagittis et.</h5>
-							<p className={styles.textDescription}>{dapplets.text_4}</p>
-						</li>
-					)}
-				</ul>
-				<ul className={styles.listText}>
-					{dapplets.text_5 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Aliquam.</h5>
-							<p className={styles.textDescription}>{dapplets.text_5}</p>
-						</li>
-					)}
-					{dapplets.text_6 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>In euismod.</h5>
-							<p className={styles.textDescription}>{dapplets.text_6}</p>
-						</li>
-					)}
-					{dapplets.text_7 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Justo amet.</h5>
-							<p className={styles.textDescription}>{dapplets.text_7}</p>
-						</li>
-					)}
-				</ul>
-				<ul className={styles.listText}>
-					{dapplets.text_8 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Urna.</h5>
-							<p className={styles.textDescription}>{dapplets.text_8}</p>
-						</li>
-					)}
-					{dapplets.text_9 && (
-						<li className={styles.rightItem}>
-							<h5 className={styles.textTitle}>Nam diam.</h5>
-							<p className={styles.textDescription}>{dapplets.text_9}</p>
-						</li>
-					)}
-				</ul>
-			</div>
-		</div>
-	);
-}

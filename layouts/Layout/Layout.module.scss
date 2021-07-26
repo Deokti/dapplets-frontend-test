@@ -6,7 +6,7 @@
 	background-image: url('../../public/bg-main.jpg');
 	background-repeat: no-repeat;
 	background-position: center center;
-	grid-template-columns: 360px minmax(300px, 1368px) 320px;
+	grid-template-columns: 360px auto 320px;
 	grid-template-rows: auto 1fr;
 	grid-template-areas:
 		"sidepanel header settingspanel"
@@ -27,4 +27,42 @@
 
 .settingsPagel {
 	grid-area: settingspanel;
+}
+
+@media screen and (max-width: 1400px) {
+	.grid {
+		grid-template-columns: 300px auto 300px;
+	}
+}
+
+@media screen and (max-width: 1220px) {
+	.grid {
+		grid-template-columns: 360px 1fr;
+		grid-template-areas:
+			"sidepanel header "
+			"sidepanel body";
+	}
+
+	.settingsPagel {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.grid {
+		grid-template-columns: 280px 1fr;
+	}
+}
+
+@media screen and (max-width: 840px) {
+	.grid {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"sidepanel"
+			"body";
+	}
+
+	.header {
+		display: none;
+	}
 }

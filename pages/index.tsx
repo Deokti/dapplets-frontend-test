@@ -1,5 +1,5 @@
 import React from 'react';
-import Dapplets from '../components/Dapplets';
+import ApplicationList from '../components/ApplicationList';
 import { API_URL } from '../config/API_URL';
 import { axios } from '../config/axios';
 import Layout from '../layouts/Layout';
@@ -10,7 +10,7 @@ function Home(): React.ReactElement {
 
   return (
     <Layout>
-      <Dapplets />
+      <ApplicationList />
     </Layout>
   );
 }
