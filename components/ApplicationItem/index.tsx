@@ -12,9 +12,10 @@ import { notification } from '../../utils/notification';
 
 import DownloadIcon from '../Icons/Dowloand.svg';
 import CheckIcon from '../Icons/Check.svg';
+import { useDrag, useDrop } from 'react-dnd';
 
 
-export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React.ReactElement<ApplicationItemProps> {
+export function ApplicationItem({ dapplets, tags, findApplication, moveApplication }: ApplicationItemProps): React.ReactElement<ApplicationItemProps> {
 	useEffect(onLoadImage, []);
 	useEffect(onGetLocalStorage, []);
 
@@ -58,14 +59,43 @@ export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React
 		setOpen(i => !i);
 	}
 
+	const originalIndex = findApplication(dapplets.id).index;
+	const [{ isDragging }, drag, preview] = useDrag(() => ({
+		type: "VERTICAL",
+		item: { id: dapplets.id, originalIndex: originalIndex },
+		collect: (monitor) => ({
+			isDragging: !!monitor.isDragging()
+		}),
+		end: (item, monitor) => {
+			const { id: droppedId, originalIndex } = item;
+			const didDrop = monitor.didDrop();
+
+			if (!didDrop) {
+				moveApplication(droppedId, originalIndex);
+			}
+		}
+	}));
+
+	const [, drop] = useDrop({
+		accept: 'VERTICAL',
+		canDrop: () => false,
+		hover({ id: from }) {
+			const { index: _in } = findApplication(dapplets.id);
+			moveApplication(from, _in);
+		}
+	});
+
+	const opacity = isDragging ? 0 : 1;
 	return (
 		<div className={cn(styles.wrapper, {
 			[styles.opened]: open === true,
 			[styles.closed]: open === false,
 		})}
+			style={{ opacity }}
+			ref={preview}
 		>
 			<div className={styles.top}>
-				<button className={styles.dragAndDrop}>
+				<button className={styles.dragAndDrop} ref={node => drag(drop(node))}>
 					<DragAndDropIcon />
 				</button>
 

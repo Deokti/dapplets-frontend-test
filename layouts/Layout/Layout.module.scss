@@ -5,7 +5,8 @@
 
 	background-image: url('../../public/bg-main.jpg');
 	background-repeat: no-repeat;
-	background-position: center center;
+	background-position: center top;
+	background-size: contain;
 	grid-template-columns: 360px auto 320px;
 	grid-template-rows: auto 1fr;
 	grid-template-areas:
