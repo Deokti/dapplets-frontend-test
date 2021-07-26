@@ -1,4 +1,5 @@
 import App, { AppContext } from 'next/app';
+import Head from 'next/head';
 import React from 'react';
 import { Toaster } from 'react-hot-toast';
 import { wrapper } from '../redux/store';
