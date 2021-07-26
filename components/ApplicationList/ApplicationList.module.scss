@@ -1,5 +1,5 @@
 .wrapper {
-	margin: 70px;
+	margin: 50px;
 	margin-bottom: 0;
 	padding: 20px;
 
@@ -14,6 +14,11 @@
 	list-style: none;
 }
 
+.header {
+	display: flex;
+	justify-content: space-between;
+}
+
 .line {
 	display: block;
 
@@ -25,4 +30,20 @@
 	border-radius: 2px;
 
 	background: #FFF;
+}
+
+.selects {
+	display: flex;
+
+	margin-left: 20px;
+
+	& > div {
+		margin-right: 20px;
+	}
+}
+
+@media screen and (max-width: 1000px) {
+	.wrapper {
+		margin: 20px;
+	}
 }

@@ -1,7 +1,7 @@
 import { ITag } from "../../interfaces";
 import { IDapplets } from "../../interfaces/redux.state";
 
-export interface DappletsItemProps {
-	dapplets?: IDapplets
-	tags: ITag[];
+export interface ApplicationListProps {
+	dapplets: IDapplets[];
+	tags: ITag[]
 }

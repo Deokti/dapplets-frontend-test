@@ -143,3 +143,21 @@
 .tagsItem {
 	margin-right: 10px;
 }
+
+@media screen and (max-width: 1000px) {
+	.header {
+		padding-left: 20px;
+	}
+
+	.categoryItem {
+		padding-left: 20px;
+	}
+
+	.list {
+		padding-left: 20px;
+	}
+
+	.listItem {
+		margin-right: 5px;
+	}
+}

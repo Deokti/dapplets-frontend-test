@@ -49,7 +49,7 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 						return (
 							<li key={id} className={styles.listItem}>
 								<span className={styles.listItemName}>{title}</span>
-								<a href={link} className={styles.listItemLink}> (<span>{author}</span>)</a>
+								<a href={link} className={styles.listItemLink} target="_blank"> (<span>{author}</span>)</a>
 							</li>
 						);
 					})}
