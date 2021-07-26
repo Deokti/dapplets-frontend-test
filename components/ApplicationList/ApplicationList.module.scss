@@ -47,3 +47,26 @@
 		margin: 20px;
 	}
 }
+
+@media screen and (max-width: 992px) {
+	.wrapper {
+		margin: 20px;
+	}
+
+	.header {
+		flex-direction: column;
+	}
+
+	.selects {
+		flex-direction: column;
+
+		margin-right: 0;
+		margin-left: 0;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.wrapper {
+		margin: 0;
+	}
+}

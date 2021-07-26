@@ -18,6 +18,11 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 		setMobileMenu(i => !i);
 	}
 
+	function onClickMenuItem(id: number) {
+		setActiveMenu(id);
+		setMobileMenu(false);
+	}
+
 	return (
 		<div className={cn(styles.panel, className)}>
 			<header className={styles.header}>
@@ -30,7 +35,9 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 				</span>
 			</header>
 
-			<ul className={styles.category}>
+			<ul className={cn(styles.category, {
+				[styles.mobileOpen]: mobileMenu
+			})}>
 				{
 					menu && menu.map(({ id, name }: IMenu): React.ReactElement => {
 
@@ -39,7 +46,7 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 								className={cn(styles.categoryItem, {
 									[styles.categoryActive]: id === activeMenu,
 								})}
-								onClick={() => setActiveMenu(id)}
+								onClick={() => onClickMenuItem(id)}
 							>
 								<div className={styles.categoryIcon}>
 									{menuIcons[id]}

@@ -4,4 +4,5 @@ export interface ButtonProps extends DetailedHTMLProps<ButtonHTMLAttributes<HTML
 	install?: boolean;
 	children: React.ReactNode;
 	appearance?: 'install' | 'default'
+	mobile?: boolean
 }

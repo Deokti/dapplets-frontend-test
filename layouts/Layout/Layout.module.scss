@@ -29,13 +29,7 @@
 	grid-area: settingspanel;
 }
 
-@media screen and (max-width: 1400px) {
-	.grid {
-		grid-template-columns: 300px auto 300px;
-	}
-}
-
-@media screen and (max-width: 1220px) {
+@media screen and (max-width: 1450px) {
 	.grid {
 		grid-template-columns: 360px 1fr;
 		grid-template-areas:
@@ -48,17 +42,17 @@
 	}
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1146px) {
 	.grid {
-		grid-template-columns: 280px 1fr;
+		grid-template-columns: 300px 1fr;
 	}
 }
 
-@media screen and (max-width: 840px) {
+@media screen and (max-width: 992px) {
 	.grid {
 		grid-template-columns: 1fr;
 		grid-template-areas:
-			"sidepanel"
+			"sidepanel "
 			"body";
 	}
 

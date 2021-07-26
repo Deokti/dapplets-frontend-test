@@ -10,6 +10,9 @@ import styles from './ApplicationItem.module.scss';
 import { ApplicationItemBottom } from './ApplicationItemBottom';
 import { notification } from '../../utils/notification';
 
+import DownloadIcon from '../Icons/Dowloand.svg';
+import CheckIcon from '../Icons/Check.svg';
+
 
 export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React.ReactElement<ApplicationItemProps> {
 	useEffect(onLoadImage, []);
@@ -67,25 +70,29 @@ export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React
 				</button>
 
 				<div className={styles.topContent} onClick={onChangeOpened}>
-					<div className={styles.image}>
-						{loadImage && <img src="./spinner-gif.gif" alt="" />}
-
-						<img
-							src={imageUrl}
-							alt={dapplets.title}
-							className={cn(styles.icon, { [styles.iconLoad]: loadImage })}
-							onLoad={onLoad}
-							onError={onError}
-						/>
-					</div>
 
 					<div className={styles.information}>
-						<h4 className={styles.title}>{dapplets.title.substr(0, 30)}</h4>
-						<span className={styles.address}>{dapplets.address}</span>
+						<div className={styles.image}>
+							{loadImage && <img src="./spinner-gif.gif" alt="" />}
+
+							<img
+								src={imageUrl}
+								alt={dapplets.title}
+								className={cn(styles.icon, { [styles.iconLoad]: loadImage })}
+								onLoad={onLoad}
+								onError={onError}
+							/>
+						</div>
+
+						<div className={styles.informationInner}>
+							<h4 className={styles.title}>{dapplets.title.substr(0, 30)}</h4>
+							<span className={styles.address}>{dapplets.address}</span>
+							<span className={styles.authorMobile}>{dapplets.author}</span>
+						</div>
 					</div>
 
 					<span className={styles.description}>{dapplets.description.substr(0, 60)}</span>
-					<span className={styles.autor}>{dapplets.author}</span>
+					<span className={styles.author}>{dapplets.author}</span>
 
 					<ul className={styles.tagList}>
 						{dapplets.tags.map((tag) => {
@@ -104,8 +111,17 @@ export function ApplicationItem({ dapplets, tags }: ApplicationItemProps): React
 					</ul>
 				</div>
 
-				<Button onClick={onSetInstallApp} install={install}>
+				<Button onClick={onSetInstallApp} install={install} className={styles.buttonDesktop}>
 					{install ? 'Uninstall' : 'Install'}
+				</Button>
+
+				<Button
+					onClick={onSetInstallApp}
+					install={install}
+					className={styles.buttonMobile}
+					mobile
+				>
+					{install ? <CheckIcon /> : <DownloadIcon />}
 				</Button>
 			</div>
 
