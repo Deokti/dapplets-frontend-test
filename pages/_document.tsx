@@ -10,6 +10,8 @@ class MyDocument extends Document {
 		return (
 			<Html lang="en">
 				<title>Тестовое приложение в компанию Dapplets Project</title>
+				<meta charSet="utf-8" />
+				<meta name="viewport" content="initial-scale=1.0, width=device-width" />
 				<link
 					rel="preload"
 					href="/fonts/SFProDisplay-400.woff2"
