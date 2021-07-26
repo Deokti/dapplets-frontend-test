@@ -1,8 +1,8 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { useDrop } from 'react-dnd';
 import { connect } from 'react-redux';
 import { IData } from '../../interfaces/redux.state';
-import { setDapplets } from '../../redux/actions';
+import { setDrag } from '../../redux/actions';
 import { ApplicationItem } from '../ApplicationItem';
 import { Search } from '../Search';
 import { Select } from '../Select';
@@ -10,7 +10,7 @@ import styles from './ApplicationList.module.scss';
 import { ApplicationListProps } from './ApplicationList.props';
 import update from 'immutability-helper';
 
-function ApplicationList({ dapplets, tags, setDapplets }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
+function ApplicationList({ dapplets, tags, setDrag }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
 
 	const findApplication = useCallback((id: string) => {
 		const application = dapplets.filter((c) => `${c.id}` === id)[0];
@@ -22,13 +22,12 @@ function ApplicationList({ dapplets, tags, setDapplets }: ApplicationListProps):
 
 	const moveApplication = useCallback((id: string, atIndex: number) => {
 		const { application, index } = findApplication(id);
-		setDapplets(
-			update(dapplets, {
-				$splice: [
-					[index, 1],
-					[atIndex, 0, application],
-				],
-			}),
+		setDrag(update(dapplets, {
+			$splice: [
+				[index, 1],
+				[atIndex, 0, application],
+			],
+		}),
 		);
 	}, [findApplication, dapplets]);
 
@@ -67,4 +66,4 @@ function ApplicationList({ dapplets, tags, setDapplets }: ApplicationListProps):
 
 const mapStateToProps = ({ dapplets, tags }: IData) => ({ dapplets, tags });
 
-export default connect(mapStateToProps, { setDapplets })(ApplicationList);
+export default connect(mapStateToProps, { setDrag })(ApplicationList);
