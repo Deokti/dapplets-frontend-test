@@ -8,3 +8,9 @@ export interface SidePanelProps {
 	tags: ITag[]
 	setActiveMenu: (activeMenu: number) => void;
 }
+
+export interface MobileMenuListProps {
+	menu: IMenu[]
+	activeMenu: number
+	setActiveMenu: (activeMenu: number) => void;
+}

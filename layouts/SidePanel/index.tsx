@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { SidePanelProps } from './SidePanel.props';
 import cn from 'classnames';
 import styles from './SidePanel.module.scss';
@@ -12,12 +12,22 @@ import { menuIcons } from '../../redux/reducer';
 import { Arrow } from '../../components/Arrow';
 
 function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
+	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
+
+	function onChangeMobileMenu() {
+		setMobileMenu(i => !i);
+	}
 
 	return (
 		<div className={cn(styles.panel, className)}>
 			<header className={styles.header}>
 				<Logo />
-				<Arrow direction="left" />
+				<div className={styles.arrow}>
+					<Arrow direction="left" />
+				</div>
+				<span className={styles.mobileMenu} onClick={onChangeMobileMenu}>
+					<span />
+				</span>
 			</header>
 
 			<ul className={styles.category}>
@@ -40,6 +50,7 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 					})
 				}
 			</ul>
+
 
 			<div className={styles.list}>
 				<h3 className={styles.listTitle}>My lists</h3>
