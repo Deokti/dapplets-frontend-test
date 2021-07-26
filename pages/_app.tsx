@@ -1,6 +1,7 @@
 import App, { AppContext } from 'next/app';
-import Head from 'next/head';
 import React from 'react';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
 import { Toaster } from 'react-hot-toast';
 import { wrapper } from '../redux/store';
 import '../styles/globals.css';
@@ -14,10 +15,10 @@ class MyApp extends App {
   render(): React.ReactElement {
     const { Component, pageProps } = this.props;
     return (
-      <React.Fragment>
+      <DndProvider backend={HTML5Backend}>
         <Component {...pageProps} />
         <Toaster />
-      </React.Fragment>
+      </DndProvider>
     );
   }
 }
