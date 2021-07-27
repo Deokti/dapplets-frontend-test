@@ -12,7 +12,6 @@ import update from 'immutability-helper';
 import { LoadingLine } from '../LoadingLine';
 
 function ApplicationList({ dapplets, tags, setDrag, loading }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
-
 	const findApplication = useCallback((id: string) => {
 		const application = dapplets.filter((c) => `${c.id}` === id)[0];
 		return {
@@ -31,7 +30,6 @@ function ApplicationList({ dapplets, tags, setDrag, loading }: ApplicationListPr
 		}),
 		);
 	}, [findApplication, dapplets]);
-
 
 	const [, drop] = useDrop(() => ({ accept: 'VERTICAL' }));
 	return (
@@ -61,11 +59,8 @@ function ApplicationList({ dapplets, tags, setDrag, loading }: ApplicationListPr
 				}
 			</ul>
 
-			{/* <div style={{ opacity: loading ? 1 : 0 }}> */}
 			{loading && <LoadingLine title="Loading more Dapplets" />}
-			{/* </div> */}
 		</div>
-
 	);
 }
 
