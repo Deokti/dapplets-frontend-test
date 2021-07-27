@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { connect } from 'react-redux';
 import ApplicationList from '../components/ApplicationList';
 import { API_URL } from '../config/API_URL';
@@ -20,6 +20,7 @@ interface HomeProps {
 
 function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber }: HomeProps): React.ReactElement<HomeProps> {
   const createRef = useRef<HTMLElement>(null);
+  const [blockedRequest, setBlockedRequest] = useState<boolean>(false);
 
   useEffect(() => {
     document.addEventListener('scroll', onScroll);
@@ -31,7 +32,15 @@ function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setReques
 
   function onScroll() {
     const scroll = scrollStatus(createRef);
-    if (scroll === 0 && requestStartNumber <= 200) getData();
+
+    if (blockedRequest === false) {
+      if (scroll === 0 && requestStartNumber <= 200) {
+        // Блокируем возможность отпавлять новый запрос вызывать
+        // пока не выполнится старый, чтобы не отпаврять много запросов
+        setBlockedRequest(true);
+        getData();
+      }
+    }
   }
 
   async function getData() {
@@ -43,23 +52,26 @@ function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setReques
     if (data !== null) {
       notification({ content: 'New Apps Received', appearance: 'success' });
       const { data: newData } = data;
-
-      const newItems = [
-        ...dapplets,
-        ...newData
-      ];
-
-      setDapplets(newItems);
-      setRequestStartNumber(newItems.length);
-      setLoading(false);
+      const newItems = [...dapplets, ...newData];
+      onSuccess(newItems);
       return false;
     }
 
+    onError();
+  }
+
+  function onError() {
     notification({ content: 'An error has occurred! New request!', appearance: 'error' });
     setLoading(false);
     getData();
   }
 
+  function onSuccess(newItems: IDapplets[]): void {
+    setDapplets(newItems);
+    setRequestStartNumber(newItems.length);
+    setLoading(false);
+    setBlockedRequest(false);
+  }
 
   return (
     <main ref={createRef}>
