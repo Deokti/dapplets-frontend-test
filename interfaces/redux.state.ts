@@ -11,6 +11,8 @@ export interface IData {
 	tags: ITag[]
 	dapplets: IDapplets[]
 	communityTags: ITag[]
+	requestStartNumber: number
+	loading: boolean
 }
 
 export interface IDapplets {

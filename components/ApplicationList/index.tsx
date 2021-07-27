@@ -9,8 +9,12 @@ import { Select } from '../Select';
 import styles from './ApplicationList.module.scss';
 import { ApplicationListProps } from './ApplicationList.props';
 import update from 'immutability-helper';
+import { LoadingLine } from '../LoadingLine';
 
-function ApplicationList({ dapplets, tags, setDrag }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
+function ApplicationList({ dapplets, tags, setDrag, loading }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
+
+	console.log(loading);
+
 
 	const findApplication = useCallback((id: string) => {
 		const application = dapplets.filter((c) => `${c.id}` === id)[0];
@@ -59,11 +63,15 @@ function ApplicationList({ dapplets, tags, setDrag }: ApplicationListProps): Rea
 					))
 				}
 			</ul>
+
+			{/* <div style={{ opacity: loading ? 1 : 0 }}> */}
+			{loading && <LoadingLine title="Loading more Dapplets" />}
+			{/* </div> */}
 		</div>
 
 	);
 }
 
-const mapStateToProps = ({ dapplets, tags }: IData) => ({ dapplets, tags });
+const mapStateToProps = ({ dapplets, tags, loading }: IData) => ({ dapplets, tags, loading });
 
 export default connect(mapStateToProps, { setDrag })(ApplicationList);
