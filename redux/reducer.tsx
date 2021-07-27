@@ -3,7 +3,7 @@ import { FiCodesandbox, FiGrid, FiUsers } from 'react-icons/fi';
 import { AnyAction } from 'redux';
 import { HYDRATE } from 'next-redux-wrapper';
 import { IData } from '../interfaces/redux.state';
-import { createCommunityTag, createTag, setActiveMenu, setRequestStartNumber, setDapplets, setDrag, setTags, setLoading } from './actions';
+import { createCommunityTag, createTag, setActiveMenu, setRequestStartNumber, setDapplets, setDrag, setTags, setLoading, setMenuOpen } from './actions';
 
 export const menuIcons = {
 	0: <FiCodesandbox size={24} />,
@@ -37,6 +37,7 @@ const initialState: IData = {
 	dapplets: [],
 	requestStartNumber: 0,
 	loading: false,
+	menuOpen: true,
 };
 
 // create your reducer
@@ -107,6 +108,13 @@ export const rootReducer = (state: IData = initialState, action: AnyAction): IDa
 			return {
 				...state,
 				loading: action.payload,
+			};
+		}
+
+		case setMenuOpen.toString(): {
+			return {
+				...state,
+				menuOpen: action.payload
 			};
 		}
 

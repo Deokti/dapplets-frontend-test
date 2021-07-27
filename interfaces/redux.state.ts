@@ -13,6 +13,7 @@ export interface IData {
 	communityTags: ITag[]
 	requestStartNumber: number
 	loading: boolean
+	menuOpen: boolean
 }
 
 export interface IDapplets {

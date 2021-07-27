@@ -12,3 +12,5 @@ export const setRequestStartNumber = createAction('SET_REQUEST_START_NUMBER');
 
 // Нужен для того, чтобы показывать или убирать 
 export const setLoading = createAction('SET_LOADING');
+
+export const setMenuOpen = createAction('SET_OPEN_MENU');

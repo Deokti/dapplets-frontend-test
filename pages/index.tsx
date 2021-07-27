@@ -12,13 +12,14 @@ import { scrollStatus } from '../utils/scroll-status';
 
 interface HomeProps {
   dapplets: IDapplets[];
+  menuOpen: boolean;
   requestStartNumber: number;
   setDapplets: (dapplets: IDapplets[]) => void;
   setLoading: (state: boolean) => void;
   setRequestStartNumber: (start: number) => void;
 }
 
-function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber }: HomeProps): React.ReactElement<HomeProps> {
+function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber, menuOpen }: HomeProps): React.ReactElement<HomeProps> {
   const createRef = useRef<HTMLElement>(null);
   const [blockedRequest, setBlockedRequest] = useState<boolean>(false);
 
@@ -75,7 +76,7 @@ function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setReques
 
   return (
     <main ref={createRef}>
-      <Layout>
+      <Layout menuOpen={menuOpen}>
         <ApplicationList />
       </Layout>
     </main>
@@ -105,6 +106,6 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   }
 });
 
-const mapStateToProps = ({ dapplets, requestStartNumber }: IData) => ({ dapplets, requestStartNumber });
+const mapStateToProps = ({ dapplets, requestStartNumber, menuOpen }: IData) => ({ dapplets, requestStartNumber, menuOpen });
 
 export default connect(mapStateToProps, { setDapplets, setLoading, setRequestStartNumber })(Home);

@@ -7,11 +7,11 @@ import { Tag } from '../../components/Tag';
 import { IMenu } from '../../interfaces';
 import { connect } from 'react-redux';
 import { IData } from '../../interfaces/redux.state';
-import { setActiveMenu } from '../../redux/actions';
+import { setActiveMenu, setMenuOpen } from '../../redux/actions';
 import { menuIcons } from '../../redux/reducer';
 import { Arrow } from '../../components/Arrow';
 
-function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }: SidePanelProps): React.ReactElement<SidePanelProps> {
+function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu, menuOpen, setMenuOpen }: SidePanelProps): React.ReactElement<SidePanelProps> {
 	const [mobileMenu, setMobileMenu] = useState<boolean>(false);
 
 	function onChangeMobileMenu() {
@@ -23,11 +23,17 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 		setMobileMenu(false);
 	}
 
+	function onMenuOpen() {
+		setMenuOpen(!menuOpen);
+	}
+
 	return (
-		<div className={cn(styles.panel, className)}>
+		<div className={cn(styles.panel, {
+			[styles.menuOpen]: menuOpen === false
+		}, className)}>
 			<header className={styles.header}>
 				<Logo />
-				<div className={styles.arrow}>
+				<div className={styles.arrow} onClick={onMenuOpen} title={menuOpen ? 'Close Menu' : 'Open Menu'}>
 					<Arrow direction="left" />
 				</div>
 				<span className={styles.mobileMenu} onClick={onChangeMobileMenu}>
@@ -90,6 +96,6 @@ function SidePanel({ menu, className, activeMenu, myList, tags, setActiveMenu }:
 	);
 }
 
-const mapStateToProps = ({ menu, myList, activeMenu, tags }: IData) => ({ menu, activeMenu, myList, tags });
+const mapStateToProps = ({ menu, myList, activeMenu, tags, menuOpen }: IData) => ({ menu, activeMenu, myList, tags, menuOpen });
 
-export default connect(mapStateToProps, { setActiveMenu })(SidePanel);
+export default connect(mapStateToProps, { setActiveMenu, setMenuOpen })(SidePanel);
