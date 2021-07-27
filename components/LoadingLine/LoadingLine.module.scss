@@ -1,0 +1,67 @@
+
+.wrapper {
+	margin-top: 40px;
+	margin-bottom: 10px;
+}
+
+.title {
+	margin: 0;
+	margin-bottom: 10px;
+
+	text-align: center;
+
+	color: #2A2A2A;
+
+	font-size: 16px;
+}
+
+.line {
+	position: relative;
+
+	display: block;
+	overflow: hidden;
+
+	max-width: 470px;
+	height: 3px;
+	margin: 0 auto;
+
+	border-radius: 3px;
+	background-color: #FFF;
+
+	&::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		width: 45%;
+		height: 100%;
+
+		content: '';
+
+		animation-name: lineAnimation;
+		animation-duration: 2s;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+
+		border-radius: 3px;
+		background: #0085FF;
+		box-shadow: 0 0 6px rgba(0, 133, 255, 0.2);
+	}
+}
+
+@keyframes lineAnimation {
+	0% {
+		transform: translateX(-400%);
+	}
+
+	100% {
+		transform: translateX(400%);
+	}
+}
+
+
+@media screen and (max-width: 600px) {
+	.title {
+		font-size: 14px;
+	}
+}

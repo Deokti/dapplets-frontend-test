@@ -5,4 +5,5 @@ export interface ApplicationListProps {
 	dapplets: IDapplets[];
 	tags: ITag[]
 	setDrag: (dapplets: IDapplets[]) => void;
+	loading: boolean;
 }

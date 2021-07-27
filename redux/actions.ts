@@ -6,3 +6,9 @@ export const setDapplets = createAction('SET_DAPPLERS');
 export const createTag = createAction('CREATE_TAG');
 export const createCommunityTag = createAction('CREATE_COMMUNITY_TAG');
 export const setDrag = createAction('SET_DRAG');
+
+// Номер записи с которой нужно получить ответ от /dapplets
+export const setRequestStartNumber = createAction('SET_REQUEST_START_NUMBER');
+
+// Нужен для того, чтобы показывать или убирать 
+export const setLoading = createAction('SET_LOADING');

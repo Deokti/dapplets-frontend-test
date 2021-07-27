@@ -8,14 +8,14 @@ import styles from './Layout.module.scss';
 function Layout({ children }: LayoutProps): React.ReactElement<LayoutProps> {
 
 	return (
-		<main className={styles.grid}>
+		<div className={styles.grid}>
 			<Header className={styles.header} />
 			<SidePanel className={styles.sidePanel} />
 			<div className={styles.body}>
 				{children}
 			</div>
 			<SettingsPanel className={styles.settingsPagel} />
-		</main >
+		</div >
 	);
 }
 

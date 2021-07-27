@@ -1,17 +1,72 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
 import ApplicationList from '../components/ApplicationList';
 import { API_URL } from '../config/API_URL';
 import { axios } from '../config/axios';
+import { IDapplets, IData } from '../interfaces/redux.state';
 import Layout from '../layouts/Layout';
-import { setDapplets, setTags } from '../redux/actions';
+import { setRequestStartNumber, setDapplets, setTags, setLoading } from '../redux/actions';
 import { wrapper } from '../redux/store';
+import { notification } from '../utils/notification';
+import { scrollStatus } from '../utils/scroll-status';
 
-function Home(): React.ReactElement {
+interface HomeProps {
+  dapplets: IDapplets[];
+  requestStartNumber: number;
+  setDapplets: (dapplets: IDapplets[]) => void;
+  setLoading: (state: boolean) => void;
+  setRequestStartNumber: (start: number) => void;
+}
+
+function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber }: HomeProps): React.ReactElement<HomeProps> {
+  const createRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    document.addEventListener('scroll', onScroll);
+
+    return () => {
+      document.removeEventListener('scroll', onScroll);
+    };
+  });
+
+  function onScroll() {
+    const scroll = scrollStatus(createRef);
+    if (scroll === 0 && requestStartNumber <= 200) getData();
+  }
+
+  async function getData() {
+    setLoading(true);
+
+    const PARAMS = { params: { start: requestStartNumber } };
+    const { data } = await axios(API_URL.dapplets, PARAMS);
+
+    if (data !== null) {
+      notification({ content: 'New Apps Received', appearance: 'success' });
+      const { data: newData } = data;
+
+      const newItems = [
+        ...dapplets,
+        ...newData
+      ];
+
+      setDapplets(newItems);
+      setRequestStartNumber(newItems.length);
+      setLoading(false);
+      return false;
+    }
+
+    notification({ content: 'An error has occurred! New request!', appearance: 'error' });
+    setLoading(false);
+    getData();
+  }
+
 
   return (
-    <Layout>
-      <ApplicationList />
-    </Layout>
+    <main ref={createRef}>
+      <Layout>
+        <ApplicationList />
+      </Layout>
+    </main>
   );
 }
 
@@ -26,6 +81,7 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
 
     store.dispatch({ type: setTags.toString(), payload: tags });
     store.dispatch({ type: setDapplets.toString(), payload: dapplets });
+    store.dispatch({ type: setRequestStartNumber.toString(), payload: dapplets.length });
 
     return {
       props: {}
@@ -37,4 +93,6 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   }
 });
 
-export default Home;
+const mapStateToProps = ({ dapplets, requestStartNumber }: IData) => ({ dapplets, requestStartNumber });
+
+export default connect(mapStateToProps, { setDapplets, setLoading, setRequestStartNumber })(Home);
