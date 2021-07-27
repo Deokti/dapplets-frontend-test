@@ -63,3 +63,7 @@
 		display: none;
 	}
 }
+
+.menuOpen {
+	grid-template-columns: 100px auto 320px;
+}

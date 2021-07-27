@@ -4,9 +4,11 @@ export interface SidePanelProps {
 	className: string
 	menu: IMenu[]
 	activeMenu: number
+	menuOpen: boolean
 	myList: List[]
 	tags: ITag[]
 	setActiveMenu: (activeMenu: number) => void;
+	setMenuOpen: (open: boolean) => void;
 }
 
 export interface MobileMenuListProps {

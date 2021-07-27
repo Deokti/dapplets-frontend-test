@@ -265,3 +265,39 @@
 .mobileOpen {
 	display: block;
 }
+
+.menuOpen {
+	position: relative;
+
+	.header {
+		padding: 0;
+
+		& > div {
+			margin: 0 auto;
+		}
+
+		& h2 {
+			display: none;
+		}
+	}
+
+	.arrow {
+		position: absolute;
+		top: 30px;
+		right: 50%;
+
+		transform: rotateY(180deg) translateX(-50%);
+	}
+
+	.categoryItem {
+		padding: 15px 40px;
+
+		& > span {
+			display: none;
+		}
+	}
+
+	.list {
+		display: none;
+	}
+}
