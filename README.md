@@ -2,12 +2,13 @@
 
 Тестовое задание на вакансию “[Frontend Developer](https://docs.google.com/document/d/1A67hVEF5fb6Uk1Y341PeyV9Yr1UUWLtANITxSzWVHHY/edit#heading=h.dn2s0spi21rh)” в компанию Dapplets Project.
 
+Ссылка на работающее приложение: [Dapplets Frontend Test](https://dapplets-frontend-test.vercel.app/)
+
 ## Используемые технологии
 - NextJS
 - TypeScript
 - Eslint / Stylelint
 - SCSS (Grid / Flex)
-
 
 ## Что реализовано
 
