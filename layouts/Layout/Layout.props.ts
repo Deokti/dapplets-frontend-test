@@ -1,6 +1,7 @@
 import React from "react";
 
 export interface LayoutProps {
-	children: React.ReactNode
-	menuOpen: boolean
+	children: React.ReactNode;
+	menuOpen: boolean;
+	settingOpen: boolean;
 }

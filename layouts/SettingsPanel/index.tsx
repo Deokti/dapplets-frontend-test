@@ -9,7 +9,7 @@ import { IData } from '../../interfaces/redux.state';
 import { Tag } from '../../components/Tag';
 import { workingOn } from './working-on';
 import WorkingStateIcon from '../../components/Icons/WorkingState.svg';
-import { createCommunityTag, createTag } from '../../redux/actions';
+import { createCommunityTag, createTag, setSettinsOpen } from '../../redux/actions';
 import { ICreateTag } from '../../interfaces';
 import { notification } from '../../utils/notification';
 
@@ -18,7 +18,7 @@ interface IValue {
 	communityTag: string;
 }
 
-function SettingsPanel({ className, tags, communityTags, createTag, createCommunityTag }: SettingsPanelProps): React.ReactElement<SettingsPanelProps> {
+function SettingsPanel({ className, tags, communityTags, createTag, createCommunityTag, settingOpen, setSettinsOpen }: SettingsPanelProps): React.ReactElement<SettingsPanelProps> {
 	const [value, setValue] = useState<IValue>({
 		myTag: '',
 		communityTag: ''
@@ -59,9 +59,15 @@ function SettingsPanel({ className, tags, communityTags, createTag, createCommun
 		setValue((state) => ({ ...state, communityTag: '' }));
 	}
 
+	function onsettingOpen() {
+		setSettinsOpen(!settingOpen);
+	}
+
 	return (
 		<div className={cn(styles.wrapper, className)}>
-			<Arrow direction="right" />
+			<div onClick={onsettingOpen}>
+				<Arrow direction="right" onClick={onsettingOpen} />
+			</div>
 
 			<div className={styles.setting}>
 				<h4 className={styles.title}>Dapplet Settings</h4>
@@ -130,6 +136,6 @@ function Tags({ tags, title, appearance = 'my-tag' }: TagsProps): React.ReactEle
 	);
 }
 
-const mapStateToProps = ({ tags, communityTags }: IData) => ({ tags, communityTags });
+const mapStateToProps = ({ tags, communityTags, settingOpen }: IData) => ({ tags, communityTags, settingOpen });
 
-export default connect(mapStateToProps, { createTag, createCommunityTag })(SettingsPanel);
+export default connect(mapStateToProps, { createTag, createCommunityTag, setSettinsOpen })(SettingsPanel);

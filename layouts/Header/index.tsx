@@ -5,8 +5,15 @@ import CloudIcon from '../../components/Icons/Cloud.svg';
 import SettingsIcon from '../../components/Icons/Settings.svg';
 
 import styles from './Header.module.scss';
+import { connect } from 'react-redux';
+import { setSettinsOpen } from '../../redux/actions';
+import { IData } from '../../interfaces/redux.state';
 
-export function Header({ className, ...props }: HeaderProps): React.ReactElement<HeaderProps> {
+function Header({ className, settingOpen, setSettinsOpen, ...props }: HeaderProps): React.ReactElement<HeaderProps> {
+
+	function onSettingOpen() {
+		setSettinsOpen(!settingOpen);
+	}
 
 	return (
 		<header
@@ -20,10 +27,14 @@ export function Header({ className, ...props }: HeaderProps): React.ReactElement
 				</span>
 			</div>
 
-			<div className={styles.settings}>
+			<div className={styles.settings} onClick={onSettingOpen}>
 				<SettingsIcon />
 				<span>Settings</span>
 			</div>
 		</header>
 	);
 }
+
+const mapStateToProps = ({ settingOpen }: IData) => ({ settingOpen });
+
+export default connect(mapStateToProps, { setSettinsOpen })(Header);

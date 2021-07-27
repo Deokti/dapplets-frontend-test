@@ -67,3 +67,22 @@
 .menuOpen {
 	grid-template-columns: 100px auto 320px;
 }
+
+.settingOpen {
+	grid-template-columns: 360px auto;
+	grid-template-areas:
+		"sidepanel header"
+		"sidepanel body";
+
+	.settingsPagel {
+		display: none;
+	}
+}
+
+.menuOpen.settingOpen {
+	grid-template-columns: 100px auto;
+
+	grid-template-areas:
+		"sidepanel header"
+		"sidepanel body";
+}

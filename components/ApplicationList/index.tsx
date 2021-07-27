@@ -13,9 +13,6 @@ import { LoadingLine } from '../LoadingLine';
 
 function ApplicationList({ dapplets, tags, setDrag, loading }: ApplicationListProps): React.ReactElement<ApplicationListProps> {
 
-	console.log(loading);
-
-
 	const findApplication = useCallback((id: string) => {
 		const application = dapplets.filter((c) => `${c.id}` === id)[0];
 		return {

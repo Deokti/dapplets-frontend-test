@@ -13,13 +13,14 @@ import { scrollStatus } from '../utils/scroll-status';
 interface HomeProps {
   dapplets: IDapplets[];
   menuOpen: boolean;
+  settingOpen: boolean;
   requestStartNumber: number;
   setDapplets: (dapplets: IDapplets[]) => void;
   setLoading: (state: boolean) => void;
   setRequestStartNumber: (start: number) => void;
 }
 
-function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber, menuOpen }: HomeProps): React.ReactElement<HomeProps> {
+function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setRequestStartNumber, menuOpen, settingOpen }: HomeProps): React.ReactElement<HomeProps> {
   const createRef = useRef<HTMLElement>(null);
   const [blockedRequest, setBlockedRequest] = useState<boolean>(false);
 
@@ -76,7 +77,7 @@ function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setReques
 
   return (
     <main ref={createRef}>
-      <Layout menuOpen={menuOpen}>
+      <Layout menuOpen={menuOpen} settingOpen={settingOpen}>
         <ApplicationList />
       </Layout>
     </main>
@@ -106,6 +107,6 @@ export const getStaticProps = wrapper.getStaticProps((store) => async () => {
   }
 });
 
-const mapStateToProps = ({ dapplets, requestStartNumber, menuOpen }: IData) => ({ dapplets, requestStartNumber, menuOpen });
+const mapStateToProps = ({ dapplets, requestStartNumber, menuOpen, settingOpen }: IData) => ({ dapplets, requestStartNumber, menuOpen, settingOpen });
 
 export default connect(mapStateToProps, { setDapplets, setLoading, setRequestStartNumber })(Home);

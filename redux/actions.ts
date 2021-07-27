@@ -14,3 +14,4 @@ export const setRequestStartNumber = createAction('SET_REQUEST_START_NUMBER');
 export const setLoading = createAction('SET_LOADING');
 
 export const setMenuOpen = createAction('SET_OPEN_MENU');
+export const setSettinsOpen = createAction('SET_SETTING_MENU');
