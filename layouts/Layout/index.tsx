@@ -11,7 +11,7 @@ function Layout({ children, menuOpen, settingOpen }: LayoutProps): React.ReactEl
 	return (
 		<div className={cn(styles.grid, {
 			[styles.menuOpen]: menuOpen === false,
-			[styles.settingOpen]: settingOpen === true
+			[styles.settingOpen]: settingOpen === false
 		})}>
 			<Header className={styles.header} />
 			<SidePanel className={styles.sidePanel} />
