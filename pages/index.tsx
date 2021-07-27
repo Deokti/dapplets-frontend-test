@@ -35,7 +35,11 @@ function Home({ dapplets, setDapplets, requestStartNumber, setLoading, setReques
   function onScroll() {
     const scroll = scrollStatus(createRef);
 
-    if (blockedRequest === false) {
+    // При поиске элементов может быть мало и эта строка проверяет высоту экрана 
+    // Если она равняется ширине экрана, то есть 1080 например, запрос посылать не нужно
+    const innerHeight = scroll !== window.innerHeight;
+
+    if (blockedRequest === false && innerHeight) {
       if (scroll === 0 && requestStartNumber <= 200) {
         // Блокируем возможность отпавлять новый запрос вызывать
         // пока не выполнится старый, чтобы не отпаврять много запросов
