@@ -6,6 +6,8 @@ export interface SettingsPanelProps extends DetailedHTMLProps<HTMLAttributes<HTM
 	communityTags: ITag[]
 	createTag: (value: ICreateTag) => void
 	createCommunityTag: (value: ICreateTag) => void
+	settingOpen: boolean;
+	setSettinsOpen: (open: boolean) => void;
 }
 
 export interface TagsProps {

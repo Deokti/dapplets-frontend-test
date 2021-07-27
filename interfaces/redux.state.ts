@@ -14,6 +14,7 @@ export interface IData {
 	requestStartNumber: number
 	loading: boolean
 	menuOpen: boolean
+	settingOpen: boolean;
 }
 
 export interface IDapplets {
